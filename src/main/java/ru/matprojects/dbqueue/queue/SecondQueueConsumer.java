@@ -13,20 +13,20 @@ import ru.yoomoney.tech.dbqueue.settings.QueueConfig;
 @Slf4j
 @Component
 @RequiredArgsConstructor
-public class FirstQueueConsumer implements QueueConsumer<String> {
-    private final QueueConfig firstQueueConfig;
+public class SecondQueueConsumer implements QueueConsumer<String> {
+    private final QueueConfig secondQueueConfig;
 
 
     @Override
     public TaskExecutionResult execute(Task<String> task) {
         String payload = task.getPayloadOrThrow();
-        log.info("Сообщение из первой очереди {}", payload);
+        log.info("Сообщение из второй очереди {}", payload);
         return TaskExecutionResult.finish();
     }
 
     @Override
     public QueueConfig getQueueConfig() {
-        return firstQueueConfig;
+        return secondQueueConfig;
     }
 
     @Override
